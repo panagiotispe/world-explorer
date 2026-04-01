@@ -10,7 +10,6 @@ export interface CountryFlags {
 
 export interface Country {
   cca3: string;
-  cca2: string;
   name: CountryName;
   flags: CountryFlags;
   capital: string[];
@@ -20,7 +19,6 @@ export interface Country {
   area: number;
   languages: Record<string, string>;
   currencies: Record<string, { name: string; symbol: string }>;
-  latlng: number[];
 }
 
 export interface QuizQuestion {

@@ -6,14 +6,14 @@ _cache: dict[str, Any] = {}
 _fetched_at: float = 0.0
 _TTL = 86400  # 24 hours
 
-FIELDS = "name,cca3,cca2,flags,capital,region,subregion,population,area,languages,currencies,latlng"
-API_URL = f"https://restcountries.com/v3.1/all?fields={FIELDS}"
+# API requires fields param; max 10 fields allowed
+_API_URL = "https://restcountries.com/v3.1/all?fields=name,cca3,flags,capital,region,subregion,population,area,languages,currencies"
 
 
 async def _load():
     global _cache, _fetched_at
     async with httpx.AsyncClient(timeout=30) as client:
-        resp = await client.get(API_URL)
+        resp = await client.get(_API_URL)
         resp.raise_for_status()
         data = resp.json()
     _cache = {c["cca3"]: c for c in data if c.get("cca3")}

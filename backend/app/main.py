@@ -8,10 +8,11 @@ from app.services import countries_service
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Create DB tables
     Base.metadata.create_all(bind=engine)
-    # Pre-warm country cache
-    await countries_service._load()
+    try:
+        await countries_service._load()
+    except Exception as exc:
+        print(f"Warning: country cache pre-warm failed ({exc}). Will retry on first request.")
     yield
 
 

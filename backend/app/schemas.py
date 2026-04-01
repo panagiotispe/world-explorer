@@ -16,7 +16,6 @@ class CountryFlags(BaseModel):
 
 class Country(BaseModel):
     cca3: str
-    cca2: str
     name: CountryName
     flags: CountryFlags
     capital: list[str]
@@ -26,7 +25,6 @@ class Country(BaseModel):
     area: float
     languages: dict[str, str]
     currencies: dict[str, dict]
-    latlng: list[float]
 
 
 # --- Quiz ---
