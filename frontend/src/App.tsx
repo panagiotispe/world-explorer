@@ -6,7 +6,7 @@ import ContinentChallenge from './pages/ContinentChallenge';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/world-explorer">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
