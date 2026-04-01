@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import FlagQuiz from './pages/FlagQuiz';
@@ -6,7 +6,7 @@ import ContinentChallenge from './pages/ContinentChallenge';
 
 export default function App() {
   return (
-    <BrowserRouter basename="/world-explorer">
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -14,6 +14,6 @@ export default function App() {
           <Route path="/challenge" element={<ContinentChallenge />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
